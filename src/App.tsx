@@ -1,10 +1,17 @@
 import React from "react";
-import HelloWord from "./components/HelloWorld";
+import Button, {ButtonType,ButtonSize } from "./components/Button/Button";
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>HelloWorld</h1>
+        <Button className="custom" target="_blank" onClick={(e) => {e.preventDefault(); alert('123')}}>Button Default</Button>
+        <Button btnType={ButtonType.Primary} >Button Primary</Button>
+        <Button btnType={ButtonType.Danger} size={ButtonSize.Large}>Button Danger</Button>
+        <Button btnType={ButtonType.Link} href="www.baidu.com">Button Baidu Link</Button>
+        <Button btnType={ButtonType.Link} href="www.baidu.com" disabled>Button Baidu Link disabled</Button>
+        <Button size={ButtonSize.Small} autoFocus >Button Danger autoFocus</Button>
+        <Button size={ButtonSize.Large}>Button Large</Button>
+        <Button size={ButtonSize.Large} disabled>Button Danger</Button>
         <h2>HelloWorld</h2>
         <h3>HelloWorld</h3>
         <h4>HelloWorld</h4>
@@ -13,7 +20,7 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <a
+        <a 
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
@@ -21,7 +28,6 @@ function App() {
         >
           Learn React
         </a>
-        <HelloWord />
       </header>
     </div>
   );
