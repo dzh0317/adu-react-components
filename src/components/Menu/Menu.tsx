@@ -1,8 +1,10 @@
 import React, { createContext, useState } from "react";
 import classNames from "classnames";
 import { MenuItemProps } from "./MenuItem";
+
 type MenuMode = "horizontal" | "vertical";
 type SelectCallback = (selectedIndex: number) => void;
+
 export interface MenuProps {
   defaultIndex?: number;
   className?: string;
@@ -10,6 +12,7 @@ export interface MenuProps {
   style?: React.CSSProperties;
   onSelect?: SelectCallback;
 }
+
 interface IMenuContext {
   index: number;
   onSelect?: SelectCallback;
@@ -43,8 +46,8 @@ const Menu: React.FC<MenuProps> = (props) => {
       const { displayName } = childElement.type;
       if (displayName === "MenuItem") {
         return React.cloneElement(childElement, {
-          index
-        })
+          index,
+        });
       } else {
         console.error(
           "Warning: Menu has a child which is not a MenuItem component"
