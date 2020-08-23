@@ -6,34 +6,47 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Menu defaultIndex={0}>
-          <MenuItem>
-            菜单1
-          </MenuItem>
-          <MenuItem>
-            菜单2
-          </MenuItem>
-          <MenuItem>
-            菜单3
-          </MenuItem>
+        <Menu defaultIndex={0} onSelect={(index) => alert(index)}>
+          <MenuItem index={0}>菜单1</MenuItem>
+          <MenuItem index={1} disabled>菜单2</MenuItem>
+          <MenuItem index={2}>菜单3</MenuItem>
         </Menu>
-        <Button className="custom" target="_blank" onClick={(e) => {e.preventDefault(); alert('123')}}>Button Default</Button>
-        <Button btnType="primary" >Button Primary</Button>
-        <Button btnType="danger" size="lg">Button Danger</Button>
-        <Button btnType="link" href="www.baidu.com">Button Baidu Link</Button>
-        <Button btnType="link" href="www.baidu.com" disabled>Button Baidu Link disabled</Button>
-        <Button size="sm" autoFocus >Button Danger autoFocus</Button>
+        <Button
+          className="custom"
+          target="_blank"
+          onClick={(e) => {
+            e.preventDefault();
+            alert("123");
+          }}
+        >
+          Button Default
+        </Button>
+        <Button btnType="primary">Button Primary</Button>
+        <Button btnType="danger" size="lg">
+          Button Danger
+        </Button>
+        <Button btnType="link" href="www.baidu.com">
+          Button Baidu Link
+        </Button>
+        <Button btnType="link" href="www.baidu.com" disabled>
+          Button Baidu Link disabled
+        </Button>
+        <Button size="sm" autoFocus>
+          Button Danger autoFocus
+        </Button>
         <Button size="lg">Button Large</Button>
-        <Button size="lg" disabled>Button Danger</Button>
+        <Button size="lg" disabled>
+          Button Danger
+        </Button>
         <h2>HelloWorld</h2>
         <h3>HelloWorld</h3>
         <h4>HelloWorld</h4>
-        <hr/>
+        <hr />
         <code>const a = 'b'</code>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <a 
+        <a
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
