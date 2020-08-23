@@ -28,9 +28,9 @@ const Menu: React.FC<MenuProps> = (props) => {
     className,
     mode,
     style,
-    onSelect,
     children,
     defaultOpenSubMenus,
+    onSelect,
   } = props;
   const [currentActive, setActive] = useState(defaultIndex);
   const classes = classNames("menu", className, {
