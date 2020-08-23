@@ -1,7 +1,8 @@
 import React from "react";
 import Button from "./components/Button/Button";
 import Menu from "./components/Menu/Menu";
-import MenuItem from "./components/Menu/MenuItem";
+import MenuItem from "./components/Menu/MenuItem"; 
+import SubMenu from "./components/Menu/SubMenu"; 
 function App() {
   return (
     <div className="App">
@@ -10,6 +11,33 @@ function App() {
           <MenuItem >菜单1</MenuItem>
           <MenuItem  disabled>菜单2</MenuItem>
           <MenuItem >菜单3</MenuItem>
+          <SubMenu title="dropdown">
+            <MenuItem>
+              dropdown1
+            </MenuItem>
+            <MenuItem>
+              dropdown2
+            </MenuItem>
+            <MenuItem>
+              dropdown3
+            </MenuItem>
+          </SubMenu>
+        </Menu>
+        <Menu defaultIndex={0} onSelect={(index) => alert(index)}>
+          <MenuItem >菜单1</MenuItem>
+          <MenuItem  disabled>菜单2</MenuItem>
+          <MenuItem >菜单3</MenuItem>
+          <SubMenu title="dropdown">
+            <MenuItem>
+              dropdown1
+            </MenuItem>
+            <MenuItem>
+              dropdown2
+            </MenuItem>
+            <MenuItem>
+              dropdown3
+            </MenuItem>
+          </SubMenu>
         </Menu>
         <Button
           className="custom"
