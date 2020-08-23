@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Menu defaultIndex={0} onSelect={(index) => alert(index)} mode="vertical">
+        <Menu defaultIndex={'0'} onSelect={(index) => alert(index)} mode="vertical" defaultOpenSubMenus={["3"]}>
           <MenuItem >菜单1</MenuItem>
           <MenuItem  disabled>菜单2</MenuItem>
           <MenuItem >菜单3</MenuItem>
@@ -23,7 +23,7 @@ function App() {
             </MenuItem>
           </SubMenu>
         </Menu>
-        <Menu defaultIndex={0} onSelect={(index) => alert(index)}>
+        <Menu defaultIndex={'0'} onSelect={(index) => alert(index)}>
           <MenuItem >菜单1</MenuItem>
           <MenuItem  disabled>菜单2</MenuItem>
           <MenuItem >菜单3</MenuItem>
