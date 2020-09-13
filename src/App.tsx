@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "./components/Button/Button";
 import Menu from "./components/Menu/Menu";
-import MenuItem from "./components/Menu/MenuItem"; 
-import SubMenu from "./components/Menu/SubMenu"; 
+import MenuItem from "./components/Menu/MenuItem";
+import SubMenu from "./components/Menu/SubMenu";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import Icon from "./components/Icon/Icon";
+import Transition from "./components/Transition/Transition";
+library.add(fas);
+
 function App() {
+  const [isOpen, setOpen] = useState(false);
   return (
     <div className="App">
       <header className="App-header">
-        <Menu defaultIndex={'0'} onSelect={(index) => alert(index)} mode="vertical" defaultOpenSubMenus={["3"]}>
+        <Icon icon="arrow-down" theme="success" size="10x" />
+        {/* <Menu defaultIndex={'0'} onSelect={(index) => alert(index)} mode="vertical" defaultOpenSubMenus={["3"]}>
           <MenuItem >菜单1</MenuItem>
           <MenuItem  disabled>菜单2</MenuItem>
           <MenuItem >菜单3</MenuItem>
@@ -22,21 +30,15 @@ function App() {
               dropdown3
             </MenuItem>
           </SubMenu>
-        </Menu>
-        <Menu defaultIndex={'0'} onSelect={(index) => alert(index)}>
-          <MenuItem >菜单1</MenuItem>
-          <MenuItem  disabled>菜单2</MenuItem>
-          <MenuItem >菜单3</MenuItem>
+        </Menu> */}
+        <Menu defaultIndex={"0"} onSelect={(index) => alert(index)}>
+          <MenuItem>菜单1</MenuItem>
+          <MenuItem disabled>菜单2</MenuItem>
+          <MenuItem>菜单3</MenuItem>
           <SubMenu title="dropdown">
-            <MenuItem>
-              dropdown1
-            </MenuItem>
-            <MenuItem>
-              dropdown2
-            </MenuItem>
-            <MenuItem>
-              dropdown3
-            </MenuItem>
+            <MenuItem>dropdown1</MenuItem>
+            <MenuItem>dropdown2</MenuItem>
+            <MenuItem>dropdown3</MenuItem>
           </SubMenu>
         </Menu>
         <Button
@@ -66,22 +68,30 @@ function App() {
         <Button size="lg" disabled>
           Button Danger
         </Button>
-        <h2>HelloWorld</h2>
-        <h3>HelloWorld</h3>
-        <h4>HelloWorld</h4>
-        <hr />
-        <code>const a = 'b'</code>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div>
+          <Button btnType="primary" onClick={() => setOpen(!isOpen)}>
+            Toggle
+          </Button>
+        </div>
+
+        <Transition in={isOpen} timeout={300} animation="zoom-in-top">
+          <div>
+            <p>
+              Edit <code>src/App.tsx</code> and save to reload.
+            </p>
+            <p>
+              Edit <code>src/App.tsx</code> and save to reload.
+            </p>
+            <p>
+              Edit <code>src/App.tsx</code> and save to reload.
+            </p>
+          </div>
+        </Transition>
+        <Transition in={isOpen} timeout={300} animation="zoom-in-top" wrapper>
+          <Button btnType="primary" onClick={() => setOpen(!isOpen)}  >
+            Toggle
+          </Button>
+        </Transition>
       </header>
     </div>
   );

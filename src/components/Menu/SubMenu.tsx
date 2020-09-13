@@ -2,7 +2,8 @@ import React, { useContext, FunctionComponentElement, useState } from "react";
 import classNames from "classnames";
 import { MenuContext } from "./Menu";
 import { MenuItemProps } from "./MenuItem";
-
+import Icon from "../Icon/Icon";
+import Transition from "../Transition/Transition";
 interface SubMenuProps {
   index?: string;
   title: string;
@@ -12,13 +13,16 @@ interface SubMenuProps {
 const SubMenu: React.FC<SubMenuProps> = (props) => {
   const { index, title, children, className } = props;
   const context = useContext(MenuContext);
-  const openedSubMenus = context.defaultOpenSubMenus as Array<string>
-  const isOpened = index && context.mode === 'vertical' ? openedSubMenus.includes(index) : false
+  const openedSubMenus = context.defaultOpenSubMenus as Array<string>;
+  const isOpened =
+    index && context.mode === "vertical"
+      ? openedSubMenus.includes(index)
+      : false;
   const [menuOpen, setOpen] = useState(isOpened);
   const classes = classNames("menu-item submenu-item", className, {
     "is-active": context.index === index,
-    // 'is-opened': menuOpen,
-    // 'is-vertical': context.mode === 'vertical'
+    "is-opened": menuOpen,
+    "is-vertical": context.mode === "vertical",
   });
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -57,7 +61,7 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
       const childElement = child as FunctionComponentElement<MenuItemProps>;
       if (childElement.type.displayName === "MenuItem") {
         return React.cloneElement(childElement, {
-          index: `${index}-${i}`
+          index: `${index}-${i}`,
         });
       } else {
         console.error(
@@ -65,12 +69,18 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
         );
       }
     });
-    return <ul className={subMenuClasses}>{childrenComponent}</ul>;
+    // return <ul className={subMenuClasses}>{childrenComponent}</ul>;
+    return (
+      <Transition in={menuOpen} timeout={300} animation="zoom-in-top">
+        <ul className={subMenuClasses}>{childrenComponent}</ul>
+      </Transition>
+    );
   };
   return (
     <li key={index} className={classes} {...hoverEvents}>
       <div className="submenu-title" {...clickEvents}>
         {title}
+        <Icon icon="angle-down" className="arrow-icon"></Icon>
       </div>
       {renderChildren()}
     </li>
