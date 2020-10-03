@@ -6,8 +6,11 @@ type ButtonType = "primary" | "default" | "danger" | "link";
 
 interface BaseButtonProps {
   className?: string;
+  /**设置 Button 的禁用 */
   disabled?: boolean;
+  /**设置 Button 的尺寸 */
   size?: ButtonSize;
+  /**设置 Button 的类型 */
   btnType?: ButtonType;
   children?: ReactNode;
   href?: string;
@@ -20,6 +23,16 @@ type AnchorButtonProps = BaseButtonProps &
 
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 
+/**
+ * 页面中最常用的按钮元素，适合于完成特定交互
+ *
+ * ### 引用方法
+ *
+ * ~~~js
+ * import { Button } from 'my-react-components'
+ *
+ * ~~~
+ */
 const Button: React.FC<ButtonProps> = (props) => {
   const {
     className,
