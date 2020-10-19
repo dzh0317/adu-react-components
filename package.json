@@ -31,15 +31,19 @@
     "start": "node scripts/start.js",
     "build": "npm run clean && npm run build-ts && npm run build-css",
     "test": "node scripts/test.js",
-    "test:noWatch": "cross-env CI=true npm run test",
+    "test:nowatch": "cross-env CI=true npm run test",
     "clean": "rimraf ./dist",
     "lint": "eslint --ext js,ts,tsx src",
     "build-ts": "tsc -p tsconfig.build.json",
     "build-css": "node-sass ./src/styles/index.scss ./dist/index.css",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "prepublishOnly": "npm run test:noWatch && npm run lint && npm run build"
-
+    "prepublishOnly": "npm run test:nowatch && npm run lint && npm run build"
+  },
+  "husky":{
+    "hooks": {
+      "pre-commit": "npm run test:nowatch && npm run lint"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -153,6 +157,7 @@
     "file-loader": "4.3.0",
     "fs-extra": "^8.1.0",
     "html-webpack-plugin": "4.0.0-beta.11",
+    "husky": "^4.3.0",
     "identity-obj-proxy": "3.0.0",
     "jest": "24.9.0",
     "jest-environment-jsdom-fourteen": "1.0.1",
