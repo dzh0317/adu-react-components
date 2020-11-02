@@ -7,7 +7,7 @@ import MenuItem from "./MenuItem";
 import SubMenu from "./SubMenu";
 library.add(fas);
 
-jest.mock('../Icon/icon', () => {
+jest.mock('../Icon/Icon', () => {
   return () => {
     return <i className="fa" />
   }
